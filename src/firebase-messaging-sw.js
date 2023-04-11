@@ -17,6 +17,8 @@ const firebaseConfig = {
 //   return;
 // }
 
+console.log('v20');
+
 const messaging = getMessaging(initializeApp(firebaseConfig));
 
 const broadcast = new BroadcastChannel('myAppChannel');
@@ -26,3 +28,5 @@ onBackgroundMessage(messaging, payload => {
   broadcast.postMessage(payload);
 });
 // })
+
+self.addEventListener('updatefound', () => {})

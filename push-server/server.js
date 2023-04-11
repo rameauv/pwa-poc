@@ -34,6 +34,32 @@ const firebaseConfig = {
   appId: "1:804703330859:web:81a1cddea349b36aa5c06e"
 };
 
+const notif = {
+  title: "Angular News",
+  body: "Newsletter Available!",
+  icon: "assets/icons/icon-72x72.png",
+  vibrate: [100, 50, 2000],
+  data: {
+    dateOfArrival: Date.now(),
+    primaryKey: 1
+  },
+  actions: [
+    {
+      action: "explore",
+      title: "Go to the site"
+    },
+    {
+      action: "explore2",
+      title: "Go to the site"
+    },
+    {
+      action: "explore4",
+      title: "Go to the site"
+    },
+  ]
+}
+
+
 const app = initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
@@ -64,9 +90,7 @@ module.exports = function (app, route) {
     messaging.send({
       token: token,
       webpush: {
-        notification: {
-          title: "test notification from firebase"
-        }
+        notification: notif
       }
     }).then(console.log)
       .catch(console.error);
